@@ -1,0 +1,62 @@
+{% extends "default.html" %}
+
+{% block title%}
+HomePage
+{% endblock title%}
+
+{% block Main%}
+
+<div class="Home-Content-Wrap">
+    <div class="Home-Content-Block Home-Content-Best-Author">
+        <div class="Home-Content-Block-Side-75Percent">
+            <h2>
+                Best Author: {{best_Author.user.username}}
+            </h2>
+            <h3>
+               nothing to display yet!
+            </h3>
+        </div>
+        <div class="Home-Content-Block-Side-25Percent"></div>
+    </div>
+    <div class="Home-Content-Block Home-Content-Best-New">
+        <div class="Home-Content-Block-Side-25Percent">
+        </div>
+        <div class="Home-Content-Block-Side-75Percent">
+            <h2>
+                Best New: {{best_News.title}}
+            </h2>
+            <h3>
+                 {{best_News.content|truncatewords:5}}
+            </h3>
+        </div>
+    </div>
+    <div class="Home-Content-Block Home-Content-Best-Article">
+        <div class="Home-Content-Block-Side-75Percent">
+            <h2>
+                Best article: {{best_Article.title}}
+            </h2>
+            <h3>
+                {{best_Article.content|truncatechars:255}}
+            </h3>
+        </div>
+        <div class="Home-Content-Block-Side-25Percent"></div>
+    </div>
+    <div class="Home-Content-Block Home-Content-Create-Post-Block">
+        <a href="/main/news/create" class="Home-Content-Block-Create-Post-Button">
+            create New
+        </a>
+        <a href="/main/articles/create" class="Home-Content-Block-Create-Post-Button">
+            create Article
+        </a>
+        <a href="/main/mypage/" class="Home-Content-Block-Create-Post-Button">
+            My Page
+        </a>
+        {% if is_not_premium %}
+        <a href="/main/upgrade" class="Home-Content-Block-Create-Post-Button">
+            Upgrade
+        </a>
+            {% endif %}
+    </div>
+</div>
+
+{% endblock Main%}

@@ -1,0 +1,42 @@
+{% extends "default.html" %}
+
+{% block title%}
+My Page
+{% endblock title%}
+
+{% block Main%}
+
+<div class="MyPage-Wrap">
+    <div class="MyPage-Header">
+        <h1>Welcome, {{ user.username }}!</h1>
+        <p>This is your personal page</p>
+    </div>
+    <div class="MyPage-Content">
+        <div class="MyPage-Info-Card">
+            <h2>Account Details</h2>
+            {% if is_premium %}
+            <p class="premium-status">You are a <span class="Text-Weight-600">Premium</span> member.</p>
+            <p>Enjoy unlimited access to all our content!</p>
+            {% else %}
+            <p>You are a <span class="Text-Weight-600">Standard</span> membe</p>
+            <a href="{% url 'upgrade' %}" class="upgrade-button">Upgrade to Premium</a>
+            {% endif %}
+
+            {% if is_not_author %}
+            <p>You are a not <span class="Text-Weight-600"> Author</span></p>
+            <a href="{% url 'startAuthor' %}" class="upgrade-button">Start Author Account</a>
+            {% else %}
+            <p class="premium-status">You are a <span class="Text-Weight-600">Author</span></p>
+            <p>You can post news and articles</p>
+            {% endif %}
+        </div>
+        <div class="MyPage-Logout-Wrap">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock Main%}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <title>{% block title%}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'style.css' %}" rel="stylesheet"> <!-- Fixed here -->
+</head>
+
+<body>
+    <header>
+
+        <a class="Logo" href="http://127.0.0.1:8000/main/home/">Logo</a>
+
+        <nav>
+                <a href="http://127.0.0.1:8000/main/home/">Home</a>
+                <a href="/main/news/">News</a>
+                <a href="/main/articles/">Articles</a>
+                <a href="/main/authors/">Authors</a>
+                <a href="/main/mypage/">My Page</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block Main%}
+        {% endblock %}
+    </main>
+
+</body>
+
+</html>

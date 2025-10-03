@@ -1,0 +1,20 @@
+{% extends "default.html" %}
+
+{% block title%}
+About {{author.user.username}}
+{% endblock title%}
+
+{% block Main%}
+
+<h1 class="Text-Align-Center">
+    {{author.user.username}}
+</h1>
+
+<h2 class="Text-Align-Center">
+    Account creation date: {{author.Author_Account_creation_date}}
+</h2>
+<h2 class="Text-Align-Center">
+    Rating: {{author.rating}}
+</h2>
+
+{% endblock Main%}

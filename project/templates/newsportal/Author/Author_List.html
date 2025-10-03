@@ -1,0 +1,70 @@
+{% extends "default.html" %}
+
+{% block title%}
+Authors-List
+{% endblock title%}
+
+{% block Main%}
+
+<h1 class="Text-Align-Center">Authors</h1>
+
+<form action="" method="get" class="filter-form">
+    <div class="filter-row">
+        <div class="filter-field">
+            {{ filterset.form.username.label_tag }}
+            {{ filterset.form.username }}
+        </div>
+        <div class="filter-field">
+            {{ filterset.form.rating.label_tag }}
+            {{ filterset.form.rating }}
+        </div>
+        <div class="filter-field">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+<div class="newsportal-Wrap">
+    <Table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in authors %}
+            <tr>
+                <td><a href="http://127.0.0.1:8000/main/authors/{{a.id}}">{{ a.user.username }}</a></td>
+                <td>{{ a.rating }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </Table>
+</div>
+<div class="newsportal-NextPagesLinks-Wrap">
+    {% comment %} Previouse {% endcomment %}
+    {% if page_obj.has_previous %}
+       <a href="?page=1">1</a>
+
+       {% comment %} First if not current {% endcomment %}
+       {% if page_obj.previous_page_number != 1 %}
+           <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+       {% endif %} 
+   {% endif %}
+
+   {% comment %} Current {% endcomment %}
+   <p>{{ page_obj.number }}</p>
+
+    {% comment %} Next {% endcomment %}
+   {% if page_obj.has_next %}
+       <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+
+       {% comment %} Last if not current {% endcomment %}
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+</div>
+
+{% endblock Main%}

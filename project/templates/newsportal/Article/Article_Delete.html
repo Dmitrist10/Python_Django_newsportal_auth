@@ -1,0 +1,22 @@
+{% extends "default.html" %}
+
+{% block title%}
+Delete {{ article.title }}
+{% endblock title%}
+
+{% block Main%}
+
+<div class="edit-post-wrap delete-post-wrap">
+    <h1 class="Text-Align-Center">
+        Delete
+    </h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Deleting: "{{ article.title }}"?</p>
+        <input type="submit" value="Delete" />
+    </form>
+
+</div> 
+
+{% endblock Main%}

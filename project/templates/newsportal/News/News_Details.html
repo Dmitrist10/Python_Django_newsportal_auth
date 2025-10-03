@@ -1,0 +1,29 @@
+{% extends "default.html" %}
+
+{% block title%}
+Article Info
+{% endblock title%}
+
+{% block Main%}
+
+<div class="newsportal-post-Details-wrap">
+
+    <h1 class="Text-Align-Center">
+        {{new.title}}
+    </h1>
+
+    <h2 class="Text-Align-Center">
+        {{new.content}}
+    </h2>
+
+    <div class="newsportal-post-wrap ">
+        <a href="/main/news/{{new.id}}/edit">
+            Edit
+        </a>
+        <a href="/main/news/{{new.id}}/delete">
+            Delete
+        </a>
+    </div>
+</div>
+
+{% endblock Main%}

@@ -1,0 +1,29 @@
+{% extends "default.html" %}
+
+{% block title%}
+Articles-List
+{% endblock title%}
+
+{% block Main%}
+
+<div class="edit-post-wrap">
+    <h1 class="Text-Align-Center">
+        Create: Article
+    </h1>
+
+    <form action="" method="post" class="edit-post-form">
+        {% csrf_token %}
+
+        {% for f in form %}
+        <div class="edit-post-form-field">
+            {{f.label_tag}}
+            {{f}}
+        </div>
+        {% endfor %}
+
+        <input type="submit" value="Save">
+    </form>
+
+</div> 
+
+{% endblock Main%}
